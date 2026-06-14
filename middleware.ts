@@ -38,9 +38,13 @@ export async function middleware(req: NextRequest) {
 
   // 1) Portail Basic Auth sur tout /admin (login compris)
   if (!gatePassed(req)) {
-    return new NextResponse("Authentification requise", {
+    const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Accès restreint</title></head><body style="font-family:system-ui,sans-serif;display:flex;min-height:90vh;align-items:center;justify-content:center;text-align:center;color:#1f2937"><div><h1 style="font-size:20px;margin:0 0 8px">Accès restreint</h1><p style="color:#6b7280;margin:0">Cette zone est réservée. Rechargez la page pour saisir vos identifiants.</p></div></body></html>`;
+    return new NextResponse(html, {
       status: 401,
-      headers: { "WWW-Authenticate": 'Basic realm="DAMDAM Admin", charset="UTF-8"' },
+      headers: {
+        "WWW-Authenticate": 'Basic realm="DAMDAM Admin", charset="UTF-8"',
+        "Content-Type": "text/html; charset=utf-8",
+      },
     });
   }
 
