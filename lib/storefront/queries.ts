@@ -206,3 +206,14 @@ export async function getHomeData() {
     categories: serialize(categories),
   };
 }
+
+/** Produits vitrine (actifs, les plus vendus) — utilisé par la page 404. */
+export async function getShowcaseProducts(limit = 8): Promise<ProductCardData[]> {
+  await connectDB();
+  const items = await Product.find({ status: "active" })
+    .select(CARD_FIELDS)
+    .sort({ soldCount: -1, createdAt: -1 })
+    .limit(limit)
+    .lean();
+  return serialize(items) as ProductCardData[];
+}
