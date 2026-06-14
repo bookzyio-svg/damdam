@@ -13,11 +13,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Boutique high-tech — Électroménager, TV & High-Tech",
-    template: "%s · Boutique high-tech",
+    default: "DAMDAM Électroménager — Électroménager neuf & reconditionné, TV & High-Tech",
+    template: "%s · DAMDAM Électroménager",
   },
   description:
-    "Électroménager, TV, audio, informatique et téléphonie au meilleur prix. Livraison suivie en temps réel, paiement sécurisé, retour 14 jours.",
+    "DAMDAM Électroménager : gros et petit électroménager, TV, audio et high-tech, neufs et reconditionnés. Livraison suivie en temps réel, paiement sécurisé, retour 14 jours.",
 };
 
 export default function RootLayout({
