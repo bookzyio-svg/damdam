@@ -8,11 +8,18 @@ export const dynamic = "force-dynamic";
 
 /** Sitemap dynamique : pages statiques + catégories + produits actifs. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  await connectDB();
-  const [products, categories] = await Promise.all([
-    Product.find({ status: "active" }).select("slug updatedAt").limit(5000).lean(),
-    Category.find().select("slug").lean(),
-  ]);
+  // Tolérant aux pannes : un souci DB ne doit jamais casser le sitemap.
+  let products: { slug: string; updatedAt?: Date }[] = [];
+  let categories: { slug: string }[] = [];
+  try {
+    await connectDB();
+    [products, categories] = await Promise.all([
+      Product.find({ status: "active" }).select("slug updatedAt").limit(5000).lean() as never,
+      Category.find().select("slug").lean() as never,
+    ]);
+  } catch {
+    /* base indisponible : on renvoie au moins les routes statiques */
+  }
 
   const staticRoutes = ["", "/recherche", "/suivi", "/contact", "/a-propos", "/mentions-legales", "/cgv", "/confidentialite", "/retractation"].map(
     (p) => ({ url: `${SITE_URL}${p || "/"}`, changeFrequency: "weekly" as const, priority: p === "" ? 1 : 0.5 }),
