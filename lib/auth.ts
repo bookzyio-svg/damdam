@@ -28,10 +28,29 @@ export const authOptions: NextAuthOptions = {
         });
         if (!user || !user.passwordHash) return null;
 
-        const ok = await bcrypt.compare(credentials.password, user.passwordHash);
-        if (!ok) return null;
+        // Anti-brute-force : compte verrouillé après trop d'échecs
+        const MAX_ATTEMPTS = 5;
+        const LOCK_MS = 15 * 60 * 1000; // 15 minutes
+        if (user.lockedUntil && user.lockedUntil.getTime() > Date.now()) {
+          // Verrou actif : refus sans même tester le mot de passe
+          return null;
+        }
 
-        // Met à jour la date de dernière connexion (best effort)
+        const ok = await bcrypt.compare(credentials.password, user.passwordHash);
+        if (!ok) {
+          // Échec : on incrémente, et on verrouille si le seuil est atteint
+          user.failedLoginAttempts = (user.failedLoginAttempts ?? 0) + 1;
+          if (user.failedLoginAttempts >= MAX_ATTEMPTS) {
+            user.lockedUntil = new Date(Date.now() + LOCK_MS);
+            user.failedLoginAttempts = 0;
+          }
+          await user.save().catch(() => {});
+          return null;
+        }
+
+        // Succès : réinitialisation des compteurs + date de connexion
+        user.failedLoginAttempts = 0;
+        user.lockedUntil = null as never;
         user.lastLoginAt = new Date();
         await user.save().catch(() => {});
 

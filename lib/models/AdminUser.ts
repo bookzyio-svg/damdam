@@ -12,6 +12,9 @@ const AdminUserSchema = new Schema(
     role: { type: String, enum: ["owner", "staff"], default: "staff" },
     active: { type: Boolean, default: true },
     lastLoginAt: Date,
+    // Anti-brute-force : compteur d'échecs + verrouillage temporaire
+    failedLoginAttempts: { type: Number, default: 0 },
+    lockedUntil: Date,
   },
   { timestamps: true },
 );
