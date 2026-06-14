@@ -35,6 +35,7 @@ export default function CheckoutPage() {
   const [appliedPromo, setAppliedPromo] = useState("");
   const [quote, setQuote] = useState<Quote | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [redirecting, setRedirecting] = useState(false); // évite le flash "panier vide" après commande
   const [error, setError] = useState<string | null>(null);
   const [showTransferModal, setShowTransferModal] = useState(false);
   const [transferAccepted, setTransferAccepted] = useState(false);
@@ -91,7 +92,18 @@ export default function CheckoutPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.email, JSON.stringify(orderItems)]);
 
-  if (ready && items.length === 0) {
+  // Pendant la redirection vers la confirmation : petit écran de transition
+  // (sinon, vider le panier afficherait brièvement « panier vide »).
+  if (redirecting) {
+    return (
+      <div className="container-site flex min-h-[50vh] flex-col items-center justify-center gap-3 py-16 text-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-line border-t-brand" />
+        <p className="text-sm font-medium text-muted">Validation de votre commande…</p>
+      </div>
+    );
+  }
+
+  if (ready && items.length === 0 && !redirecting) {
     return (
       <div className="container-site py-16 text-center">
         <h1 className="mb-2 text-2xl font-bold">Votre panier est vide</h1>
@@ -141,8 +153,9 @@ export default function CheckoutPage() {
       setError((body.errors?.join(" ") || body.error) ?? "Erreur lors de la commande");
       return;
     }
-    clear();
+    setRedirecting(true); // bascule sur l'écran de transition avant de vider le panier
     router.push(`/commande/${body.orderNumber}`);
+    clear();
   }
 
   const inputCls = "w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm text-ink transition placeholder:text-muted/70 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none";
