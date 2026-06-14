@@ -10,6 +10,7 @@ export default withAuth({
 });
 
 export const config = {
-  // Tout /admin sauf la page de login (et les assets internes Next gérés ailleurs)
-  matcher: ["/admin/((?!login).*)"],
+  // /admin EXACT (le tableau de bord) + tout /admin/** SAUF la page de login.
+  // Sans la 1re entrée, /admin (racine) n'était pas protégé → faille corrigée.
+  matcher: ["/admin", "/admin/((?!login).*)"],
 };

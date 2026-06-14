@@ -1,12 +1,21 @@
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminTopbar from "@/components/admin/AdminTopbar";
 
+export const dynamic = "force-dynamic";
+
 /** Chrome du back-office authentifié : sidebar + topbar. */
-export default function AdminPanelLayout({
+export default async function AdminPanelLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Défense en profondeur : aucune page du panneau ne s'affiche sans session.
+  const session = await getServerSession(authOptions);
+  if (!session?.user) redirect("/admin/login");
+
   return (
     <div className="flex min-h-screen bg-surface">
       <AdminSidebar />
