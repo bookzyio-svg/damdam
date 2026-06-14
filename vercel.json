@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/cron/delivery-advance",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/delivery-notify",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/abandoned-carts",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/unpaid-orders",
+      "schedule": "0 8 * * *"
+    }
+  ]
+}
