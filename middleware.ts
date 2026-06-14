@@ -14,20 +14,24 @@ import { getToken } from "next-auth/jwt";
  *    valide ; sinon redirection vers le login.
  */
 
-const GATE_USER = process.env.ADMIN_GATE_USER;
-const GATE_PASS = process.env.ADMIN_GATE_PASSWORD;
-
 function gatePassed(req: NextRequest): boolean {
+  // On nettoie les espaces/retours à la ligne parasites des variables d'env
+  const expectedUser = (process.env.ADMIN_GATE_USER || "").trim();
+  const expectedPass = (process.env.ADMIN_GATE_PASSWORD || "").trim();
   // Portail désactivé tant qu'il n'est pas configuré (évite de tout verrouiller)
-  if (!GATE_USER || !GATE_PASS) return true;
+  if (!expectedUser || !expectedPass) return true;
+
   const header = req.headers.get("authorization") || "";
   if (!header.startsWith("Basic ")) return false;
   try {
-    const decoded = atob(header.slice(6)); // "user:pass"
+    // Décodage base64 -> octets -> UTF-8 (gère les accents/caractères spéciaux)
+    const b64 = header.slice(6).trim();
+    const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+    const decoded = new TextDecoder().decode(bytes); // "user:pass"
     const i = decoded.indexOf(":");
     const user = decoded.slice(0, i);
     const pass = decoded.slice(i + 1);
-    return user === GATE_USER && pass === GATE_PASS;
+    return user === expectedUser && pass === expectedPass;
   } catch {
     return false;
   }
