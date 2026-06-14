@@ -13,7 +13,7 @@ export default async function AdminPromoPage() {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Codes promo</h1>
-        <Link href="/admin/codes-promo/nouveau" className="btn-brand">+ Nouveau code</Link>
+        <Link href="/360-pilotage/codes-promo/nouveau" className="btn-brand">+ Nouveau code</Link>
       </div>
       <PromoList initial={serialize(codes)} />
     </div>

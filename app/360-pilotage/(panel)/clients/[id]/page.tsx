@@ -27,7 +27,7 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
   return (
     <div className="mx-auto max-w-4xl">
       <div className="mb-6 flex items-center gap-3">
-        <Link href="/admin/clients" className="text-sm text-brand hover:underline">← Clients</Link>
+        <Link href="/360-pilotage/clients" className="text-sm text-brand hover:underline">← Clients</Link>
         <h1 className="text-2xl font-bold">{customer.name || customer.email}</h1>
       </div>
 
@@ -75,7 +75,7 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
               <tbody>
                 {orders.map((o: { _id: string; orderNumber: string; total: number; status: string; createdAt?: string }) => (
                   <tr key={o._id} className="border-b border-line/60">
-                    <td className="py-2"><Link href={`/admin/commandes/${o._id}`} className="font-semibold text-brand hover:underline">{o.orderNumber}</Link></td>
+                    <td className="py-2"><Link href={`/360-pilotage/commandes/${o._id}`} className="font-semibold text-brand hover:underline">{o.orderNumber}</Link></td>
                     <td className="py-2">{formatPrice(o.total)}</td>
                     <td className="py-2"><span className={`rounded px-2 py-0.5 text-xs ${ORDER_STATUS[o.status]?.className ?? "bg-surface"}`}>{orderStatusLabel(o.status)}</span></td>
                     <td className="py-2 text-right text-xs text-muted">{o.createdAt ? new Date(o.createdAt).toLocaleDateString("fr-FR") : ""}</td>

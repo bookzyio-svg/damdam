@@ -20,7 +20,7 @@ export default function AdminMobileNav() {
           <div className="absolute inset-0 bg-ink/50" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-0 flex h-full w-64 flex-col bg-ink text-white shadow-xl">
             <div className="flex items-center justify-between px-5 py-4">
-              <Link href="/admin" onClick={() => setOpen(false)} className="flex items-center gap-2 text-lg font-extrabold">
+              <Link href="/360-pilotage" onClick={() => setOpen(false)} className="flex items-center gap-2 text-lg font-extrabold">
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-white">B</span>
                 Boutique<span className="-ml-1 text-brand">.</span>
               </Link>

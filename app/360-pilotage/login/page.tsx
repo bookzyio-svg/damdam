@@ -17,7 +17,7 @@ export default function AdminLoginPage() {
 function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
-  const callbackUrl = params.get("callbackUrl") || "/admin";
+  const callbackUrl = params.get("callbackUrl") || "/360-pilotage";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

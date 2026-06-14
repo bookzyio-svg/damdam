@@ -272,7 +272,7 @@ export default function ProductForm({
       setStatusMsg({ type: "ok", message: "Produit enregistré" });
       router.refresh();
     } else {
-      router.push("/admin/produits");
+      router.push("/360-pilotage/produits");
       router.refresh();
     }
   }

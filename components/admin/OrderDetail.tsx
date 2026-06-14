@@ -66,7 +66,7 @@ export default function OrderDetail({ initial, steps }: { initial: Order; steps:
       {/* En-tête */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <Link href="/admin/commandes" className="text-sm text-brand hover:underline">← Commandes</Link>
+          <Link href="/360-pilotage/commandes" className="text-sm text-brand hover:underline">← Commandes</Link>
           <h1 className="text-2xl font-bold">{order.orderNumber}</h1>
           <span className={`rounded px-2 py-0.5 text-xs font-medium ${st?.className ?? "bg-surface"}`}>{st?.label ?? order.status}</span>
         </div>

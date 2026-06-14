@@ -125,7 +125,7 @@ export default function OrdersTable() {
                       <input type="checkbox" checked={selected.has(o._id)} onChange={() => toggleOne(o._id)} className="accent-brand" aria-label="Sélectionner" />
                     </td>
                     <td className="p-3">
-                      <Link href={`/admin/commandes/${o._id}`} className="font-semibold text-brand hover:underline">{o.orderNumber}</Link>
+                      <Link href={`/360-pilotage/commandes/${o._id}`} className="font-semibold text-brand hover:underline">{o.orderNumber}</Link>
                       <div className="font-mono text-xs text-muted">{o.paymentReference}</div>
                     </td>
                     <td className="p-3">
@@ -138,7 +138,7 @@ export default function OrdersTable() {
                     </td>
                     <td className="p-3 text-muted">{o.createdAt ? new Date(o.createdAt).toLocaleDateString("fr-FR") : "—"}</td>
                     <td className="p-3 text-right">
-                      <Link href={`/admin/commandes/${o._id}`} className="font-medium text-brand hover:underline">Détail</Link>
+                      <Link href={`/360-pilotage/commandes/${o._id}`} className="font-medium text-brand hover:underline">Détail</Link>
                     </td>
                   </tr>
                 );

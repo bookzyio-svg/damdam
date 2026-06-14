@@ -86,7 +86,7 @@ export default function CustomersTable() {
                   <td className="p-3">{c.acceptsMarketing ? <span className="text-stock">Oui</span> : <span className="text-muted">Non</span>}</td>
                   <td className="p-3 text-muted">{c.createdAt ? new Date(c.createdAt).toLocaleDateString("fr-FR") : "—"}</td>
                   <td className="p-3 text-right">
-                    <Link href={`/admin/clients/${c._id}`} className="font-medium text-brand hover:underline">Détail</Link>
+                    <Link href={`/360-pilotage/clients/${c._id}`} className="font-medium text-brand hover:underline">Détail</Link>
                   </td>
                 </tr>
               ))

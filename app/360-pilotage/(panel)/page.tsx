@@ -88,7 +88,7 @@ export default async function AdminDashboardPage() {
       <section className="mt-6 rounded-xl border border-line bg-white p-5 shadow-sm">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-bold">Commandes récentes</h2>
-          <Link href="/admin/commandes" className="text-sm text-brand hover:underline">Tout voir →</Link>
+          <Link href="/360-pilotage/commandes" className="text-sm text-brand hover:underline">Tout voir →</Link>
         </div>
         {k.recentOrders.length === 0 ? (
           <p className="text-sm text-muted">Aucune commande.</p>
@@ -98,7 +98,7 @@ export default async function AdminDashboardPage() {
               {k.recentOrders.map((o: { _id: string; orderNumber: string; customer?: { name?: string }; total: number; status: string; createdAt?: string }) => (
                 <tr key={o._id} className="border-b border-line/60">
                   <td className="py-2">
-                    <Link href={`/admin/commandes/${o._id}`} className="font-semibold text-brand hover:underline">{o.orderNumber}</Link>
+                    <Link href={`/360-pilotage/commandes/${o._id}`} className="font-semibold text-brand hover:underline">{o.orderNumber}</Link>
                   </td>
                   <td className="py-2 text-muted">{o.customer?.name}</td>
                   <td className="py-2">{formatPrice(o.total)}</td>

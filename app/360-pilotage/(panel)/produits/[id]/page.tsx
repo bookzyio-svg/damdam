@@ -23,7 +23,7 @@ export default async function EditProductPage({
   return (
     <div>
       <div className="mb-6 flex items-center gap-3">
-        <Link href="/admin/produits" className="text-sm text-brand hover:underline">← Produits</Link>
+        <Link href="/360-pilotage/produits" className="text-sm text-brand hover:underline">← Produits</Link>
         <h1 className="text-2xl font-bold">Éditer le produit</h1>
       </div>
       <ProductForm initial={serialize(product)} categories={serialize(categories)} />

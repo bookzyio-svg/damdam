@@ -37,7 +37,7 @@ export default function AdminTopbar() {
           </div>
         </div>
         <button
-          onClick={() => signOut({ callbackUrl: "/admin/login" })}
+          onClick={() => signOut({ callbackUrl: "/360-pilotage/login" })}
           aria-label="Déconnexion"
           className="flex items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm font-medium text-ink transition hover:border-deal hover:text-deal"
         >

@@ -172,7 +172,7 @@ async function HomeContent() {
         {empty ? (
           <p className="rounded-xl border border-dashed border-line bg-white p-8 text-center text-sm text-muted">
             Aucun produit publié pour le moment. Ajoutez des produits depuis le back-office
-            (<Link href="/admin/produits/nouveau" className="text-brand underline">/admin/produits/nouveau</Link>) et passez-les en statut « Actif ».
+            (<Link href="/360-pilotage/produits/nouveau" className="text-brand underline">/360-pilotage/produits/nouveau</Link>) et passez-les en statut « Actif ».
           </p>
         ) : null}
       </div>

@@ -165,7 +165,7 @@ export function buildTemplate(
 
     case "admin-new-order": {
       const orderId = (data.order as { _id?: string })._id ?? "";
-      const adminUrl = `${SITE_URL}/admin/commandes/${orderId}`;
+      const adminUrl = `${SITE_URL}/360-pilotage/commandes/${orderId}`;
       const body = `
         <h1 style="font-size:20px;margin:0 0 8px;">🔔 Nouvelle commande à vérifier</h1>
         <p style="font-size:14px;color:${MUTED};margin:0 0 12px;">

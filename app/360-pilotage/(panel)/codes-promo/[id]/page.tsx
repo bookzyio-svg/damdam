@@ -33,7 +33,7 @@ export default async function EditPromoPage({
   return (
     <div>
       <div className="mb-6 flex items-center gap-3">
-        <Link href="/admin/codes-promo" className="text-sm text-brand hover:underline">← Codes promo</Link>
+        <Link href="/360-pilotage/codes-promo" className="text-sm text-brand hover:underline">← Codes promo</Link>
         <h1 className="text-2xl font-bold">Éditer le code promo</h1>
       </div>
       <PromoForm

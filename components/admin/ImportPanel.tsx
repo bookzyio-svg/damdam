@@ -154,13 +154,13 @@ export default function ImportPanel() {
                     {created.map((c) => (
                       <li key={c.id} className="flex items-center gap-2 text-sm">
                         <input type="checkbox" checked={selected.has(c.id)} onChange={() => toggle(c.id)} className="accent-brand" />
-                        <Link href={`/admin/produits/${c.id}`} className="text-brand hover:underline">{c.title}</Link>
+                        <Link href={`/360-pilotage/produits/${c.id}`} className="text-brand hover:underline">{c.title}</Link>
                       </li>
                     ))}
                   </ul>
                   <div className="mt-3 flex items-center gap-3">
                     <button onClick={rewrite} disabled={busy || selected.size === 0} className="btn-outline">Réécrire {selected.size > 0 ? `(${selected.size})` : ""} avec l&apos;IA</button>
-                    <Link href="/admin/produits" className="text-sm text-brand hover:underline">Voir les brouillons →</Link>
+                    <Link href="/360-pilotage/produits" className="text-sm text-brand hover:underline">Voir les brouillons →</Link>
                   </div>
                   {rewriteMsg ? <p className="mt-2 text-sm">{rewriteMsg}</p> : null}
                 </div>

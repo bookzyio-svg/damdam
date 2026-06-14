@@ -10,7 +10,7 @@ import { AdminUser } from "@/lib/models/AdminUser";
  */
 export const authOptions: NextAuthOptions = {
   session: { strategy: "jwt" },
-  pages: { signIn: "/admin/login" },
+  pages: { signIn: "/360-pilotage/login" },
   providers: [
     CredentialsProvider({
       name: "Admin",

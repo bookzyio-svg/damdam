@@ -14,7 +14,7 @@ export default async function AdminPanelLayout({
 }) {
   // Défense en profondeur : aucune page du panneau ne s'affiche sans session.
   const session = await getServerSession(authOptions);
-  if (!session?.user) redirect("/admin/login");
+  if (!session?.user) redirect("/360-pilotage/login");
 
   return (
     <div className="flex min-h-screen bg-surface">

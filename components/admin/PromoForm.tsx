@@ -115,7 +115,7 @@ export default function PromoForm({
       setStatus({ type: "ok", message: "Code enregistré" });
       router.refresh();
     } else {
-      router.push("/admin/codes-promo");
+      router.push("/360-pilotage/codes-promo");
       router.refresh();
     }
   }

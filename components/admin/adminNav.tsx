@@ -25,32 +25,32 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     title: "Pilotage",
     links: [
-      { label: "Tableau de bord", href: "/admin", icon: LayoutDashboard },
-      { label: "Commandes", href: "/admin/commandes", icon: ShoppingBag },
-      { label: "Avis", href: "/admin/avis", icon: Star },
-      { label: "Clients", href: "/admin/clients", icon: Users },
-      { label: "Conversations", href: "/admin/conversations", icon: MessagesSquare },
-      { label: "Messages", href: "/admin/messages", icon: Inbox },
-      { label: "Newsletter", href: "/admin/newsletter", icon: Send },
+      { label: "Tableau de bord", href: "/360-pilotage", icon: LayoutDashboard },
+      { label: "Commandes", href: "/360-pilotage/commandes", icon: ShoppingBag },
+      { label: "Avis", href: "/360-pilotage/avis", icon: Star },
+      { label: "Clients", href: "/360-pilotage/clients", icon: Users },
+      { label: "Conversations", href: "/360-pilotage/conversations", icon: MessagesSquare },
+      { label: "Messages", href: "/360-pilotage/messages", icon: Inbox },
+      { label: "Newsletter", href: "/360-pilotage/newsletter", icon: Send },
     ],
   },
   {
     title: "Catalogue",
     links: [
-      { label: "Produits", href: "/admin/produits", icon: Package },
-      { label: "Catégories", href: "/admin/categories", icon: FolderTree },
-      { label: "Import", href: "/admin/import", icon: Upload },
-      { label: "Codes promo", href: "/admin/codes-promo", icon: Ticket },
+      { label: "Produits", href: "/360-pilotage/produits", icon: Package },
+      { label: "Catégories", href: "/360-pilotage/categories", icon: FolderTree },
+      { label: "Import", href: "/360-pilotage/import", icon: Upload },
+      { label: "Codes promo", href: "/360-pilotage/codes-promo", icon: Ticket },
     ],
   },
   {
     title: "Configuration",
-    links: [{ label: "Réglages", href: "/admin/reglages", icon: Settings }],
+    links: [{ label: "Réglages", href: "/360-pilotage/reglages", icon: Settings }],
   },
 ];
 
 function isActive(pathname: string, href: string): boolean {
-  if (href === "/admin") return pathname === "/admin";
+  if (href === "/360-pilotage") return pathname === "/360-pilotage";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

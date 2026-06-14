@@ -57,7 +57,7 @@ export default function PromoList({ initial }: { initial: Promo[] }) {
                   </span>
                 </td>
                 <td className="p-3 text-right">
-                  <Link href={`/admin/codes-promo/${c._id}`} className="font-medium text-brand hover:underline">Éditer</Link>
+                  <Link href={`/360-pilotage/codes-promo/${c._id}`} className="font-medium text-brand hover:underline">Éditer</Link>
                   <button onClick={() => remove(c._id)} className="ml-3 font-medium text-deal hover:underline">Suppr.</button>
                 </td>
               </tr>

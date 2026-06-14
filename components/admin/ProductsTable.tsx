@@ -136,7 +136,7 @@ export default function ProductsTable() {
           <option value="draft">Brouillons</option>
           <option value="archived">Archivés</option>
         </select>
-        <Link href="/admin/produits/nouveau" className="btn-brand">+ Nouveau produit</Link>
+        <Link href="/360-pilotage/produits/nouveau" className="btn-brand">+ Nouveau produit</Link>
       </div>
 
       {/* Barre d'actions par lot */}
@@ -244,7 +244,7 @@ export default function ProductsTable() {
                     </select>
                   </td>
                   <td className="p-3 text-right">
-                    <Link href={`/admin/produits/${p._id}`} className="font-medium text-brand hover:underline">Éditer</Link>
+                    <Link href={`/360-pilotage/produits/${p._id}`} className="font-medium text-brand hover:underline">Éditer</Link>
                     <button onClick={() => remove(p._id)} className="ml-3 font-medium text-deal hover:underline">Suppr.</button>
                   </td>
                 </tr>

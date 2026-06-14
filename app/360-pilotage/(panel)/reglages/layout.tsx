@@ -2,13 +2,13 @@ import Link from "next/link";
 
 /** Sous-navigation des réglages (onglets). */
 const TABS = [
-  { label: "Boutique", href: "/admin/reglages/boutique" },
-  { label: "Bannières", href: "/admin/reglages/bannieres" },
-  { label: "Paiement", href: "/admin/reglages/paiement" },
-  { label: "Livraison", href: "/admin/reglages/livraison" },
-  { label: "Chatbot", href: "/admin/reglages/chatbot" },
-  { label: "Relances", href: "/admin/reglages/relances" },
-  { label: "Légal", href: "/admin/reglages/legal" },
+  { label: "Boutique", href: "/360-pilotage/reglages/boutique" },
+  { label: "Bannières", href: "/360-pilotage/reglages/bannieres" },
+  { label: "Paiement", href: "/360-pilotage/reglages/paiement" },
+  { label: "Livraison", href: "/360-pilotage/reglages/livraison" },
+  { label: "Chatbot", href: "/360-pilotage/reglages/chatbot" },
+  { label: "Relances", href: "/360-pilotage/reglages/relances" },
+  { label: "Légal", href: "/360-pilotage/reglages/legal" },
 ];
 
 export default function ReglagesLayout({
