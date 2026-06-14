@@ -3,15 +3,15 @@
   "crons": [
     {
       "path": "/api/cron/delivery-advance",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 7 * * *"
     },
     {
       "path": "/api/cron/delivery-notify",
-      "schedule": "*/5 * * * *"
+      "schedule": "10 7 * * *"
     },
     {
       "path": "/api/cron/abandoned-carts",
-      "schedule": "*/30 * * * *"
+      "schedule": "0 9 * * *"
     },
     {
       "path": "/api/cron/unpaid-orders",
