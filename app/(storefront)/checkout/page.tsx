@@ -54,10 +54,13 @@ export default function CheckoutPage() {
         postalCode: form.postalCode || undefined,
         country: form.country || undefined,
         promoCode: appliedPromo || undefined,
-        email: form.email || undefined,
+        // n'envoyer l'email au devis que s'il est valide (sinon 400 côté serveur)
+        email: /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email) ? form.email : undefined,
       }),
     });
-    setQuote(await res.json());
+    if (!res.ok) return; // requête invalide : on garde le devis précédent
+    const data = await res.json().catch(() => null);
+    if (data && !data.error) setQuote(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(orderItems), form.postalCode, form.country, form.email, appliedPromo]);
 
@@ -163,7 +166,7 @@ export default function CheckoutPage() {
 
   const subtotalNow = quote?.subtotal ?? items.reduce((s, i) => s + i.price * i.quantity, 0);
   const promoApplied = Boolean(appliedPromo && quote?.discountTotal);
-  const promoError = quote?.errors.find((e) => /code promo/i.test(e));
+  const promoError = quote?.errors?.find((e) => /code promo/i.test(e));
   const stockErrors = (quote?.errors ?? []).filter((e) => !/code promo/i.test(e));
 
   return (
